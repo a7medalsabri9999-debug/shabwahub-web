@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>المحادثة | شبوة HUB</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="app-container">
+  <div class="chat-page">
+    <div class="chat-header-page">
+      <button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-right"></i></button>
+      <div class="chat-header-info">
+        <div class="chat-header-name username" id="chat-user-name">جاري التحميل...</div>
+        <div class="chat-header-status" id="chat-user-status">متصل الآن</div>
+      </div>
+      <button class="menu-btn" onclick="showToast('خيارات المحادثة قريباً ⚙️', 'info')"><i class="fas fa-ellipsis-v"></i></button>
+    </div>
+    
+    <div id="chat-messages" class="chat-messages">
+      <div class="loading-posts"><div class="spinner"></div></div>
+    </div>
+    
+    <form class="chat-input-area" id="chat-form">
+      <textarea id="chat-input" class="chat-input" placeholder="اكتب رسالة..." rows="1" maxlength="1000"></textarea>
+      <button type="submit" class="chat-send"><i class="fas fa-paper-plane"></i></button>
+    </form>
+  </div>
+
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/theme.js"></script>
+  <script type="module" src="js/messages.js"></script>
+  <script type="module">
+    import { getCurrentUser } from './js/app.js';
+    import { openChatWindow } from './js/messages.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const chatId = params.get('chat');
+      if(chatId) openChatWindow(chatId);
+      else window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

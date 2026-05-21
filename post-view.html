@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>منشور | شبوة HUB</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="app-container sub-page">
+  <header class="sub-page-header">
+    <button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-right"></i></button>
+    <h1>منشور</h1>
+    <div class="header-spacer"></div>
+  </header>
+  <main class="page-content">
+    <div id="single-post-container" class="posts-list" style="padding:0">
+      <div class="loading-posts"><div class="spinner"></div><p>جاري تحميل المنشور...</p></div>
+    </div>
+    <div style="padding:15px;border-top:1px solid var(--border-color)">
+      <h3 style="margin-bottom:10px">التعليقات</h3>
+      <div id="post-comments" class="comments-list"></div>
+    </div>
+  </main>
+
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/theme.js"></script>
+  <script type="module" src="js/feed.js"></script>
+  <script type="module" src="js/app.js"></script>
+  <script type="module">
+    import { loadSinglePost } from './js/feed.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const postId = params.get('id');
+      if(postId) loadSinglePost(postId);
+      else window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إنشاء حساب | شبوة HUB</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="auth-page">
+  <div class="auth-container">
+    <img src="img/logo.png" alt="شبوة HUB" class="auth-logo">
+    <h2 class="username gold-text">انضم لشبوة HUB</h2>
+    
+    <form id="signup-form" class="auth-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>الاسم الكامل *</label>
+          <input type="text" id="signup-name" required>
+        </div>
+        <div class="form-group">
+          <label>@اسم المستخدم *</label>
+          <input type="text" id="signup-username" pattern="^[a-zA-Z0-9_]{3,20}$" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>البريد الإلكتروني *</label>
+        <input type="email" id="signup-email" required>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>كلمة المرور *</label>
+          <input type="password" id="signup-password" required>
+        </div>
+        <div class="form-group">
+          <label>تأكيد كلمة المرور *</label>
+          <input type="password" id="signup-confirm" required>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>العمر</label>
+          <input type="number" id="signup-age" min="13" max="99">
+        </div>
+        <div class="form-group">
+          <label>الجنس</label>
+          <select id="signup-gender">
+            <option value="">اختر...</option>
+            <option value="male">ذكر</option>
+            <option value="female">أنثى</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>البلد</label>
+        <input type="text" id="signup-country" list="countries">
+        <datalist id="countries">
+          <option value="اليمن"><option value="السعودية"><option value="مصر">
+          <option value="الإمارات"><option value="الأردن"><option value="فلسطين">
+          <option value="العراق"><option value="سوريا"><option value="لبنان">
+          <!-- بقية الدول -->
+        </datalist>
+      </div>
+      
+      <button type="submit" class="btn btn-primary btn-block">إنشاء الحساب</button>
+    </form>
+    
+    <p class="auth-switch">
+      لديك حساب؟ <a href="login.html">تسجيل الدخول</a>
+    </p>
+  </div>
+  
+  <script type="module">
+    import { initAuth } from './js/auth.js';
+    initAuth();
+  </script>
+</body>
+</html>
